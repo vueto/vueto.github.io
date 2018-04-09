@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="闭包">
+<meta name="description" content="闭包在学习javascript的时候，闭包的学习时不可避免的，也是javascript中的一个难点，它非常重要但又难以理解。今天就梳理一下自己对闭包的认识。 1.为什么要用到闭包在javascript的世界里有全局变量和局部变量，而没有私有变量。而闭包就是通过javascript的全局变量和局部变量来模拟私有变量的一种方法。 闭包的定义：1.闭包是指可以访问其所在作用域的函数那这样说来，需要通过作">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包的理解">
 <meta property="og:url" content="http://yoursite.com/2018/04/09/closure/index.html">
 <meta property="og:site_name" content="VueTo Blog">
-<meta property="og:description" content="闭包">
+<meta property="og:description" content="闭包在学习javascript的时候，闭包的学习时不可避免的，也是javascript中的一个难点，它非常重要但又难以理解。今天就梳理一下自己对闭包的认识。 1.为什么要用到闭包在javascript的世界里有全局变量和局部变量，而没有私有变量。而闭包就是通过javascript的全局变量和局部变量来模拟私有变量的一种方法。 闭包的定义：1.闭包是指可以访问其所在作用域的函数那这样说来，需要通过作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T06:51:08.000Z">
+<meta property="og:updated_time" content="2018-04-09T08:37:35.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包的理解">
-<meta name="twitter:description" content="闭包">
+<meta name="twitter:description" content="闭包在学习javascript的时候，闭包的学习时不可避免的，也是javascript中的一个难点，它非常重要但又难以理解。今天就梳理一下自己对闭包的认识。 1.为什么要用到闭包在javascript的世界里有全局变量和局部变量，而没有私有变量。而闭包就是通过javascript的全局变量和局部变量来模拟私有变量的一种方法。 闭包的定义：1.闭包是指可以访问其所在作用域的函数那这样说来，需要通过作">
 
 
 
@@ -330,7 +330,17 @@
       
 
       
-        <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1>
+        <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>在学习javascript的时候，闭包的学习时不可避免的，也是javascript中的一个难点，它非常重要但又难以理解。<br>今天就梳理一下自己对闭包的认识。</p>
+<h3 id="1-为什么要用到闭包"><a href="#1-为什么要用到闭包" class="headerlink" title="1.为什么要用到闭包"></a>1.为什么要用到闭包</h3><p>在javascript的世界里有全局变量和局部变量，而没有私有变量。<br>而闭包就是通过javascript的全局变量和局部变量来模拟私有变量的一种方法。</p>
+<p>闭包的定义：<br>1.闭包是指可以访问其所在作用域的函数<br>那这样说来，需要通过作用域链查找变量的函数就是闭包<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按照定义一的说法，需要通过作用域链在全局环境中查找变量n的函数foo()就是闭包</span></span><br><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(n)<span class="comment">//0</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>2.闭包是指有权访问另一个函数作用域中的变量的函数<br>那这样说来，访问上层函数的作用域的内层函数就是闭包<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按照定义二的说法，嵌套在foo函数里的bar函数就是闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br><span class="line">    &#125;</span><br><span class="line">    bar();</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>3.闭包是指在函数声明时的作用域以外的地方被调用的函数<br>在函数声明时的作用域以外的地方调用函数，需要通过将该函数作为返回值或者作为参数被传递</p>
+<p>[1]返回值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按照定义三的说法，在foo()函数的作用域中声明，在全局环境的作用域中被调用的bar()函数是闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a); <span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line">foo()();</span><br></pre></td></tr></table></figure></p>
+<p>可以简写为如下表示：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">foo()();</span><br></pre></td></tr></table></figure></p>
+<p>[2]参数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按照定义三的说法，在foo()函数的作用域中声明，在bar()函数的作用域中被调用的baz()函数是闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a); <span class="comment">//2</span></span><br><span class="line">    &#125;</span><br><span class="line">    bar(baz);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    fn();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因此，无论通过何种手段，只要将内部函数传递到所在的词法作用域以外，它都会持有对原始作用域的引用，无论在何处执行这个函数都会使用闭包</p>
+<p>这三个闭包的定义是不同书籍对于闭包的定义。<br>严格来说，闭包需要满足三个条件：【1】访问所在作用域；【2】函数嵌套；【3】在所在作用域外被调用  </p>
+
       
     </div>
     
@@ -475,7 +485,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为什么要用到闭包"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.为什么要用到闭包</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
