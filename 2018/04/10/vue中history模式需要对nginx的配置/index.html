@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="vue中history模式需要对nginx的配置vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。">
+<meta name="description" content="vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。">
 <meta name="keywords" content="vue,nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue中history模式需要对nginx的配置">
 <meta property="og:url" content="http://yoursite.com/2018/04/10/vue中history模式需要对nginx的配置/index.html">
 <meta property="og:site_name" content="VueTo Blog">
-<meta property="og:description" content="vue中history模式需要对nginx的配置vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。">
+<meta property="og:description" content="vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T03:33:18.546Z">
+<meta property="og:updated_time" content="2018-04-10T05:43:33.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue中history模式需要对nginx的配置">
-<meta name="twitter:description" content="vue中history模式需要对nginx的配置vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。">
+<meta name="twitter:description" content="vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。">
 
 
 
@@ -352,7 +352,7 @@
       
 
       
-        <h1 id="vue中history模式需要对nginx的配置"><a href="#vue中history模式需要对nginx的配置" class="headerlink" title="vue中history模式需要对nginx的配置"></a>vue中history模式需要对nginx的配置</h1><p>vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。<br><a id="more"></a><br>这是因为当你通过点击跳转进入子路由，实际是前端路由,是通过html5的history接口模拟出来的路由，实际上这个路由并不存在于服务器端。  </p>
+        <p>vue中在使用history模式生成项目后，你会发现当你通过点击跳转进入子路由时是没有问题的，但是当你刷新页面后，页面就丢失了。<br><a id="more"></a><br>这是因为当你通过点击跳转进入子路由，实际是前端路由,是通过html5的history接口模拟出来的路由，实际上这个路由并不存在于服务器端。  </p>
 <p>因此当你刷新页面的时候，浏览器向服务器发送了一个请求，但是服务器并不能找到这个页面因此页面就丢失了。  </p>
 <p>如果服务器端是nginx，我们需要对nginx进行一些配置，找到这个页面。  </p>
 <h2 id="1-如果vue项目在域名的根目录下"><a href="#1-如果vue项目在域名的根目录下" class="headerlink" title="1.如果vue项目在域名的根目录下"></a>1.如果vue项目在域名的根目录下</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">  <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -540,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue中history模式需要对nginx的配置"><span class="nav-number">1.</span> <span class="nav-text">vue中history模式需要对nginx的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如果vue项目在域名的根目录下"><span class="nav-number">1.1.</span> <span class="nav-text">1.如果vue项目在域名的根目录下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如果vue项目在域名的子目录下"><span class="nav-number">1.2.</span> <span class="nav-text">2.如果vue项目在域名的子目录下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-注意"><span class="nav-number">1.3.</span> <span class="nav-text">3.注意</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如果vue项目在域名的根目录下"><span class="nav-number">1.</span> <span class="nav-text">1.如果vue项目在域名的根目录下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如果vue项目在域名的子目录下"><span class="nav-number">2.</span> <span class="nav-text">2.如果vue项目在域名的子目录下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-注意"><span class="nav-number">3.</span> <span class="nav-text">3.注意</span></a></li></ol></div>
             
 
           </div>
