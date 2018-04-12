@@ -123,6 +123,7 @@ var RENDERER = {
 		}
 	}
 };
+
 var STRATEGY = {
 	SCATTER_RADIUS :150,
 	CONE_ASPECT_RATIO : 1.5,
@@ -199,10 +200,12 @@ var STRATEGY = {
 		};
 	}
 };
+
 var PARTICLE = function(center){
 	this.center = center;
 	this.init();
 };
+
 PARTICLE.prototype = {
 	SPRING : 0.01,
 	FRICTION : 0.9,
@@ -286,6 +289,7 @@ PARTICLE.prototype = {
 		return {x : this.center.x + axis.x * scale, y : this.center.y - axis.y * scale, color : this.COLOR.replace('%hue', this.hue + theta)};
 	}
 };
+
 $(function(){
 	RENDERER.init(STRATEGY);
 });
